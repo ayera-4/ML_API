@@ -2,6 +2,7 @@ from sklearn.datasets import load_iris
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
+import pickle
 
 X = load_iris().data
 y = load_iris().target
@@ -14,6 +15,8 @@ fitted = clf.fit(X_train, y_train)
 y_pred = fitted.predict(X_test)
 
 score = accuracy_score(y_test, y_pred)
+
+pickle.dump(fitted, open("model.pkl", "wb"))
 print('Accuracy: ', score)
 
 
